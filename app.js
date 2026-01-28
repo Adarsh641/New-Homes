@@ -5,11 +5,15 @@
  const Listing = require('./models/listing');
  const path= require('path');
  const methodOverride= require('method-override');
+ const ejsMate=require('ejs-mate') ;
+
+ app.engine('ejs', ejsMate);
 
  app.set('view engine', 'ejs');
  app.set('views', path.join(__dirname, 'views'));
  app.use(express.urlencoded({extended:true}));
  app.use(methodOverride('_method'));
+ app.use(express.static(path.join(__dirname, '/public'))); 
  main()
     .then(()=>{
         console.log("connected to mongodb");
@@ -29,7 +33,7 @@
     res.render('listings/index.ejs', {alllistings});
  }); 
 
- app.get('/listing/new', (req, res)=>{
+ app.get('/listings/new', (req, res)=>{
    res.render('listings/new.ejs');
  })
  app.post('/listings', async(req, res)=>{

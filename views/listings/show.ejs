@@ -1,23 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
-    <h3>Listings detail</h3>
-    
-    <ul>
-        <li><%= listing.title %></li>
-        <li><%= listing.description %></li>
-        <li>&#8377;<%= listing.price.toLocaleString("en-IN") %></li>
-        <li><%= listing.location %></li>
-        <li><%= listing.country %></li>
-    </ul>
-    <a href="/listings/<%=listing._id%>/edit"> edit</a>
-    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button>delete</button>
-    </form>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>" style="height:28rem; object-fit:cover; border-radius:0.75rem;">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= listing.title %></h4>
+                        <p class="card-text text-muted">&#8377;<%= listing.price.toLocaleString("en-IN") %> / night</p>
+                        <p class="card-text"><%= listing.description %></p>
+                        <p class="card-text"><small class="text-muted"><%= listing.location %>, <%= listing.country %></small></p>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="/listings/<%=listing._id%>/edit" class="btn btn-sm btn-primary">Edit</a>
+                            <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" onsubmit="return confirm('Delete this listing?');">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                            <a href="/listings" class="btn btn-sm btn-secondary ms-auto">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
