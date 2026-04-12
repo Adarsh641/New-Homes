@@ -4,7 +4,7 @@
 <div class="container mt-4 mb-5">
     <h2 class="mb-4">Edit Listing</h2>
 
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
 
         <!-- Title -->
         <div class="mb-3">
@@ -15,6 +15,7 @@
                 name="listing[title]"
                 value="<%= listing.title %>"
                 required>
+            <div class="invalid-feedback"> Please provide a title.</div>
         </div>
 
         <!-- Description -->
@@ -25,6 +26,7 @@
                 name="listing[description]"
                 rows="3"
                 required><%= listing.description %></textarea>
+            <div class="invalid-feedback"> Please provide a description.</div>
         </div>
 
         <!-- Image -->
@@ -34,7 +36,9 @@
                 type="text" 
                 class="form-control"
                 name="listing[image]"
-                value="<%= listing.image %>">
+                value="<%= listing.image %>"
+                required>
+                <div class="invalid-feedback"> Please provide an image URL.</div>
         </div>
 
         <!-- Price & Country -->
@@ -47,6 +51,7 @@
                     name="listing[price]"
                     value="<%= listing.price %>"
                     required>
+                    <div class="invalid-feedback"> Please provide a price.</div>
             </div>
 
             <div class="col-md-6 mb-3">
@@ -57,6 +62,7 @@
                     name="listing[country]"
                     value="<%= listing.country %>"
                     required>
+                    <div class="invalid-feedback"> Please provide a country.</div>
             </div>
         </div>
 
@@ -69,6 +75,7 @@
                 name="listing[location]"
                 value="<%= listing.location %>"
                 required>
+                <div class="invalid-feedback"> Please provide a location.</div>
         </div>
 
         <!-- Button -->
