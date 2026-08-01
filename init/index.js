@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 const Listing = require('../models/listing');
 const initdata= require('./data.js');
 
-const MONGO_URL="mongodb://127.0.0.1:27017/newhomes";
- main()
+const MONGO_URL = "mongodb://mongo:27017/newhomes"; main()
     .then(async () => {
         console.log("connected to mongodb");
         await initDB();
