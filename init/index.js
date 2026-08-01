@@ -4,10 +4,11 @@ const initdata= require('./data.js');
 
 const MONGO_URL="mongodb://127.0.0.1:27017/newhomes";
  main()
-    .then(()=>{
+    .then(async () => {
         console.log("connected to mongodb");
+        await initDB();
     })
-    .catch((err)=>{
+    .catch((err) => {
         console.log("error connecting to mongodb", err);
     });
  async function main(){
@@ -20,4 +21,3 @@ const MONGO_URL="mongodb://127.0.0.1:27017/newhomes";
     await Listing.insertMany(initdata.data);
     console.log("Database initialized");
  }
-initDB();
