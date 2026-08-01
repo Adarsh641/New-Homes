@@ -7,7 +7,7 @@ services:
       - mongo-data:/data/db
 
   new-homes:
-    build: .
+    image: adarsh9798/new-homes:latest
     ports:
       - "8080:8080"
     env_file:
